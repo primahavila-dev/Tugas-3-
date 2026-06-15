@@ -1,0 +1,15 @@
+<template id="tpl-modal">
+  <div v-if="visible" class="modal-overlay">
+    <div class="modal-box">
+      <h3>{{ title }}</h3>
+
+      <div class="modal-content">
+        <slot></slot>
+      </div>
+
+      <div class="modal-footer">
+        <button @click="$emit('close')">Tutup</button>
+      </div>
+    </div>
+  </div>
+</template>

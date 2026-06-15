@@ -1,0 +1,28 @@
+<template id="tpl-tracking">
+  <div>
+    <h2>Tracking Delivery Order</h2>
+
+    <input type="text" v-model="keyword" placeholder="Masukkan Nomor DO" />
+
+    <button @click="cariDO">Search DO</button>
+
+    <button @click="reset">Reset</button>
+
+    <hr />
+
+    <div v-if="hasil">
+      <h3>Data Pengiriman</h3>
+
+      <p><b>Nomor DO:</b> {{hasil.nomorDO}}</p>
+      <p><b>Nama:</b> {{hasil.detail.nama}}</p>
+      <p><b>Status:</b> {{hasil.detail.status}}</p>
+      <p><b>Ekspedisi:</b> {{hasil.detail.ekspedisi}}</p>
+
+      <div class="tracking-card" v-for="item in hasil.detail.perjalanan">
+        <h4>{{item.waktu}}</h4>
+
+        <p>{{item.keterangan}}</p>
+      </div>
+    </div>
+  </div>
+</template>

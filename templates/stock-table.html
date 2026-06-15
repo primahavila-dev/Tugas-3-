@@ -1,0 +1,68 @@
+<template id="tpl-stock">
+  <div>
+    <h2>Data Stok Bahan Ajar</h2>
+
+    <select v-model="filterUpbjj">
+      <option value="">Semua UPBJJ</option>
+
+      <option v-for="u in upbjjList">{{u}}</option>
+    </select>
+
+    <select v-model="filterKategori">
+      <option value="">Semua Kategori</option>
+
+      <option v-for="k in kategoriList">{{k}}</option>
+    </select>
+
+    <label>
+      <input type="checkbox" v-model="stokOnly" />
+
+      Stok Menipis
+    </label>
+
+    <select v-model="sortBy">
+      <option value="judul">Judul</option>
+
+      <option value="harga">Harga</option>
+
+      <option value="qty">Stok</option>
+    </select>
+
+    <table border="1">
+      <tr>
+        <th>Kode</th>
+        <th>Judul</th>
+        <th>Kategori</th>
+        <th>UPBJJ</th>
+        <th>Lokasi</th>
+        <th>Harga</th>
+        <th>Qty</th>
+        <th>Safety</th>
+        <th>Status</th>
+        <th>Aksi</th>
+      </tr>
+
+      <tr v-for="(item,index) in filteredData">
+        <td>{{item.kode}}</td>
+        <td>{{item.judul}}</td>
+        <td>{{item.kategori}}</td>
+        <td>{{item.upbjj}}</td>
+        <td>{{item.lokasiRak}}</td>
+
+        <td>{{formatHarga(item.harga)}}</td>
+
+        <td>{{item.qty}} buah</td>
+
+        <td>{{item.safety}} buah</td>
+
+        <td>
+          <status-badge :qty="item.qty" :safety="item.safety"> </status-badge>
+        </td>
+
+        <td>
+          <button @click="hapus(index)">Hapus</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</template>

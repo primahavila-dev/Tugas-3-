@@ -1,0 +1,9 @@
+<template id="tpl-badge">
+  <span>
+    <span v-if="qty >= safety" class="aman"> ✅ Aman </span>
+
+    <span v-else-if="qty > 0" class="warning"> ⚠ Menipis </span>
+
+    <span v-else class="danger"> ❌ Kosong </span>
+  </span>
+</template>
